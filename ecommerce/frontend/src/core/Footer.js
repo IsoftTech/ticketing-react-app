@@ -4,13 +4,6 @@ import { Link, withRouter } from "react-router-dom";
 
 const Footer = () => (
   <div>
-    <section className="mail-list-subscription">
-      <h3>Epic events and incredible deals straight to your inbox.</h3>
-      <form action>
-        <input type="email" placeholder="Email address" />
-        <button type="submit">Join the list</button>
-      </form>
-    </section>
     <footer>
       <div className="container-fluid">
         <div className="row">

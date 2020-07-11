@@ -5,35 +5,32 @@ import { Link, withRouter } from "react-router-dom";
 const Menu = () => (
   <div>
     <article className="update">
-      Coronavirus Update: Visit <a href="#">My tickets</a> for your event's
-      status or click <a href="#">here</a> to learn more about our impacted
+      Coronavirus Update: Visit <a href="/">My tickets</a> for your event's
+      status or click <a href="/">here</a> to learn more about our impacted
       event policy
     </article>
     <header className="tobpar-sm-wrapper">
       <div className="toolbar">
         <div className="hamburger">
-          <div className="line1">
-            <div className="line2">
-              <div className="line3">
-                <Link to="/">
-                  <img
-                    src="assets/logos/favicon.png"
-                    className="logo"
-                    alt="Love1Ticket"
-                  />
-                </Link>
-                <div className="signin">
-                  <Link to="/signin">
-                    <h6>Sign in</h6>
-                    <img src="assets/images/user.svg" alt="sign in" />
-                  </Link>
-                </div>
-              </div>
-              <div className="searchbar"></div>
-            </div>
-          </div>
+          <div className="line1"></div>
+          <div className="line2"></div>
+          <div className="line3"></div>
+        </div>
+        <Link to="/">
+          <img
+            src="assets/logos/favicon.png"
+            className="logo"
+            alt="Love1Ticket"
+          />
+        </Link>
+        <div className="signin">
+          <Link to="/signin">
+            <h6>Sign in</h6>
+            <img src="assets/images/user.svg" alt="sign in" />
+          </Link>
         </div>
       </div>
+      <div className="searchbar"></div>
     </header>
     <section className="menu-sm">
       <div className="menu-header">
@@ -49,16 +46,16 @@ const Menu = () => (
         <li className="menu-section__item">
           <Link to="#">My Tickets</Link>
         </li>
-        {/* <li className="menu-section__item">
+        <li className="menu-section__item">
           <a href="#">Sell</a>
-        </li> */}
+        </li>
       </ul>
       <ul className="menu-section">
         <li className="menu-section__item">
-          <Link to="#">Sports</Link>
+          <Link to="#">Teams</Link>
         </li>
         <li className="menu-section__item">
-          <Link to="#">Concerts</Link>
+          <Link to="#">Fixtures</Link>
         </li>
         <li className="menu-section__item">
           <Link to="#">Theater &amp; Comedy</Link>
@@ -72,9 +69,7 @@ const Menu = () => (
       </ul>
       <ul className="menu-section">
         <li className="menu-section__item">
-          <h4>
-            <Link to="#">Have Questions? </Link>{" "}
-          </h4>
+          <h4>Have Questions?</h4>
         </li>
         <li className="menu-section__item">
           <Link href="#">Help Center</Link>
@@ -107,7 +102,7 @@ const Menu = () => (
           </div>
         </div>
         <div className="toolbar-nav__wrapper">
-          {/* <div className="nav-item">
+          <div className="nav-item">
             <div className="dropdown">
               <div className="dropdown-toggle">Sell</div>
               <ul className="dropdown-menu">
@@ -116,7 +111,7 @@ const Menu = () => (
                 <li className="dropdown-menu__item">My sales</li>
               </ul>
             </div>
-          </div> */}
+          </div>
           <Link to="#" className="nav-item">
             My tickets
           </Link>
@@ -133,10 +128,10 @@ const Menu = () => (
           <li className="nav-item">
             <div className="dropdown">
               <div className="dropdown-toggle">
-                <Link to="#">Sports</Link>
+                <Link to="#">Teams</Link>
               </div>
 
-              {/* <ul className="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
@@ -145,15 +140,15 @@ const Menu = () => (
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
-              </ul> */}
+              </ul>
             </div>
           </li>
           <li className="nav-item">
             <div className="dropdown">
               <div className="dropdown-toggle">
-                <Link to="#">Concerts</Link>
+                <Link to="#">Fixtures</Link>
               </div>
-              {/* <ul className="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li className="dropdown-menu__item">Lorum Ipsum</li>
                 <li className="dropdown-menu__item">Lorum Ipsum</li>
                 <li className="dropdown-menu__item">Lorum Ipsum</li>
@@ -168,7 +163,7 @@ const Menu = () => (
                 <li className="dropdown-menu__item">Lorum Ipsum</li>
                 <li className="dropdown-menu__item">Lorum Ipsum</li>
                 <li className="dropdown-menu__item">Lorum Ipsum</li>
-              </ul> */}
+              </ul>
             </div>
           </li>
           <li className="nav-item">
@@ -176,7 +171,7 @@ const Menu = () => (
               <div className="dropdown-toggle">
                 <Link>Theater &amp; Comedy</Link>
               </div>
-              {/* <ul className="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
@@ -186,18 +181,21 @@ const Menu = () => (
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
-              </ul> */}
+              </ul>
             </div>
           </li>
           <li className="nav-item">
-            <Link href="#">Gift Cards</Link>
+            <Link to="/about">About Us</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/contact">Contact Us</Link>
           </li>
           <li className="nav-item">
             <div className="dropdown">
               <div className="dropdown-toggle">
-                <Link>Top Cities</Link>
+                <Link>Top Matches</Link>
               </div>
-              {/* <ul className="dropdown-menu">
+              <ul className="dropdown-menu">
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
@@ -205,7 +203,7 @@ const Menu = () => (
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
                 <li className="dropdown-menu__item">Lorem Ipsum</li>
-              </ul> */}
+              </ul>
             </div>
           </li>
         </ul>
