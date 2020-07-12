@@ -7,7 +7,7 @@ import Menu from "../core/Menu";
 const Signin = () => (
   <div>
     <Menu />
-    <section class="signin">
+    <section className="signin">
       <h2>Sign in to StubHub</h2>
 
       <form action="">
@@ -25,7 +25,7 @@ const Signin = () => (
           placeholder="Password"
           required
         />
-        <a href="#" class="forgot-password">
+        <a href="#" className="forgot-password">
           Forgot Password?
         </a>
         <button type="submit">Sign in</button>

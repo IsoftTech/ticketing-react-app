@@ -8,7 +8,7 @@ const Signup = () => (
   <div>
     <Menu />
 
-    <section class="register">
+    <section className="register">
       <h2>Sign Up for StubHub</h2>
 
       <form action="">
@@ -48,7 +48,7 @@ const Signup = () => (
           required
         />
         <button type="submit">Sign Up</button>
-        <p class="agreement">
+        <p className="agreement">
           By purchasing or signing in, you agree to
           <a href="#">our user agreement</a> and acknowledge our
           <a href="register.html">privacy notice</a>.
@@ -57,7 +57,7 @@ const Signup = () => (
 
       <h4>Connect with friends on StubHub</h4>
 
-      <p class="bold">
+      <p className="bold">
         Have a StubHub account?<Link to="/signin">Sign in</Link>
       </p>
     </section>
