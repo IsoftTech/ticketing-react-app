@@ -158,6 +158,11 @@ select.select-custom:focus {
   border-color: #1dbac2;
 }
 
+.error-placeholder {
+  color: #ec2371;
+  user-select: none;
+}
+
 .responsive-table {
   overflow-x: auto;
 }
