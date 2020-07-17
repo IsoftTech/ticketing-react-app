@@ -1,18 +1,47 @@
 import React, { useState, useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import $ from "jquery";
 
 import Menu from "../core/Menu";
 import { registerStart } from "../store/actions/index";
 import * as actionTypes from "../store/actions/actionTypes";
 
 const Signup = (props) => {
+  // Initial states of the form and error
+
   const [userState, setUserState] = useState({});
   const [errorState, setErrorState] = useState({});
 
+  // Change error state if any error is thrown while making POST
+
   useEffect(() => {
+    // Password toggler events
+
+    $(".show-password-toggler").click(function () {
+      const toggleImg = $(this).find("img");
+      const inputField = $(this).siblings("input");
+      if (toggleImg.attr("src") === "/assets/images/show-password-icon.png") {
+        toggleImg.attr("src", "/assets/images/hide-password-icon.jpg");
+        inputField.attr("type", "text");
+      } else if (
+        toggleImg.attr("src") === "/assets/images/hide-password-icon.jpg"
+      ) {
+        toggleImg.attr("src", "/assets/images/show-password-icon.png");
+        inputField.attr("type", "password");
+      }
+    });
+
     if (props.errors) setErrorState(props.errors);
   }, [props.errors]);
+
+  // If the user is signed in, redirect to /dashboard everytime tries to open sign in page
+
+  useEffect(() => {
+    if (props.auth.isAuthenticated) props.history.push("/dashboard");
+  });
+
+  // Reset the error state every time the component is Mount and Unmount
 
   useEffect(() => {
     return () => props.resetErrors();
@@ -32,7 +61,6 @@ const Signup = (props) => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(userState);
     props.register(userState, props.history);
   };
 
@@ -43,7 +71,7 @@ const Signup = (props) => {
       <section className="register">
         <h2>Sign Up for StubHub</h2>
 
-        <p class="error-placeholder">
+        <p className="error-placeholder">
           {errorState.error ? errorState.error : null}
         </p>
 
@@ -52,14 +80,7 @@ const Signup = (props) => {
             type="text"
             name="name"
             id="name"
-            placeholder="First Name"
-            onChange={inputChangeHandler}
-          />
-          <input
-            type="text"
-            name="lastName"
-            id="lastName"
-            placeholder="Last Name"
+            placeholder="Full Name"
             onChange={inputChangeHandler}
           />
           <input
@@ -76,13 +97,18 @@ const Signup = (props) => {
             placeholder="Phone"
             onChange={inputChangeHandler}
           />
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-            onChange={inputChangeHandler}
-          />
+          <div className="password-field-container">
+            <input
+              name="password"
+              type="password"
+              id="password"
+              placeholder="Password"
+              onChange={inputChangeHandler}
+            />
+            <span className="show-password-toggler" style={{ top: "8px" }}>
+              <img src="/assets/images/show-password-icon.png" />
+            </span>
+          </div>
           <button type="submit">Sign Up</button>
           <p className="agreement">
             By purchasing or signing in, you agree to

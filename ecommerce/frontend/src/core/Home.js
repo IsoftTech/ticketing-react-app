@@ -43,7 +43,6 @@ const Home = () => {
 
   return (
     <div>
-      <div className="backdrop"></div>
       <Menu />
       <section>
         <div className="carousel-landing">

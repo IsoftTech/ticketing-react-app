@@ -1,24 +1,49 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import $ from "jquery";
 
 import Menu from "../core/Menu";
 import { loginStart } from "../store/actions/index";
 import * as actionTypes from "../store/actions/actionTypes";
 
 const Signin = (props) => {
+  // Initial states of the form and error
+
   const [userState, setUserState] = useState({});
   const [errorState, setErrorState] = useState({});
+
+  // Change error state if any error is thrown while making POST
 
   useEffect(() => {
     if (props.errors) setErrorState(props.errors);
   }, [props.errors]);
 
-  useEffect(() => {
-    if (props.auth.isAuthenticated) props.push("/dashboard");
-  }, [props.auth]);
+  // If the user is signed in, redirect to /dashboard everytime tries to open sign in page
 
   useEffect(() => {
+    if (props.auth.isAuthenticated) props.history.push("/dashboard");
+  });
+
+  // Reset the error state every time the component is Mount and Unmount
+
+  useEffect(() => {
+    // Password toggler events
+
+    $(".show-password-toggler").click(function () {
+      const toggleImg = $(this).find("img");
+      const inputField = $(this).siblings("input");
+      if (toggleImg.attr("src") === "/assets/images/show-password-icon.png") {
+        toggleImg.attr("src", "/assets/images/hide-password-icon.jpg");
+        inputField.attr("type", "text");
+      } else if (
+        toggleImg.attr("src") === "/assets/images/hide-password-icon.jpg"
+      ) {
+        toggleImg.attr("src", "/assets/images/show-password-icon.png");
+        inputField.attr("type", "password");
+      }
+    });
+
     return () => props.resetErrors();
   }, []);
 
@@ -46,7 +71,7 @@ const Signin = (props) => {
       <section className="signin">
         <h2>Sign in to StubHub</h2>
 
-        <p class="error-placeholder">
+        <p className="error-placeholder">
           {errorState.error ? errorState.error : null}
         </p>
 
@@ -58,16 +83,21 @@ const Signin = (props) => {
             placeholder="Email"
             onChange={inputChangeHandler}
           />
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-            onChange={inputChangeHandler}
-          />
-          <a href="#" className="forgot-password">
+          <div className="password-field-container">
+            <input
+              name="password"
+              type="password"
+              id="password"
+              placeholder="Password"
+              onChange={inputChangeHandler}
+            />
+            <span className="show-password-toggler" style={{ top: "8px" }}>
+              <img src="/assets/images/show-password-icon.png" />
+            </span>
+          </div>
+          <Link to="/" className="forgot-password">
             Forgot Password?
-          </a>
+          </Link>
           <button type="submit">Sign in</button>
         </form>
 
@@ -77,7 +107,7 @@ const Signin = (props) => {
           New to StubHub? <Link to="/signup">Create account</Link>
         </p>
         <p>
-          Have an access code? <a href="#">Find your order</a>
+          Have an access code? <Link to="/">Find your order</Link>
         </p>
       </section>
     </div>
@@ -98,4 +128,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signin);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Signin));

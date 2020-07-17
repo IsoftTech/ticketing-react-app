@@ -13,15 +13,12 @@ const authReducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
       };
-      break;
     case actionTypes.REGISTER_START:
       return {
         ...state,
         user: action.payload,
       };
-      break;
     case actionTypes.SET_CURRENT_USER:
-      console.log(action);
       return {
         ...state,
         isAuthenticated: !isEmpty(action.payload),
